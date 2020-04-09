@@ -2,10 +2,7 @@ package fr.unice.polytech.isa.dd.entities;
 //import org.jetbrains.annotations.NotNull;
 
 //import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -26,11 +23,19 @@ public class DroneStatus implements Serializable {
     //    @NotNull
     private Date timeEndState;
 
+    @ManyToOne
+    private Drone drone;
 
-    public DroneStatus(DRONE_STATES state, Date hourBeginning, Date hourEnd) {
+    public DroneStatus(Drone drone, DRONE_STATES state, Date hourBeginning, Date hourEnd) {
         libelleStatusDrone=  state;
         timeStartState = hourBeginning;
         timeEndState = hourEnd;
+        drone=drone;
+    }
+    public DroneStatus(Drone drone, DRONE_STATES state, Date hourBeginning) {
+        libelleStatusDrone=  state;
+        timeStartState = hourBeginning;
+        drone=drone;
     }
 
     public int getId() {
@@ -50,4 +55,11 @@ public class DroneStatus implements Serializable {
     }
 
 
+    public Drone getDrone() {
+        return drone;
+    }
+
+    public void setDrone(Drone drone) {
+        this.drone = drone;
+    }
 }

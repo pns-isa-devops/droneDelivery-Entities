@@ -31,7 +31,7 @@ public class Drone implements Serializable {
     //Cest status management qui doit être ici du coup je pense je ne suis pas sûr
     //private DroneStatus droneStatus = new DroneStatus(DRONE_STATES.AVAILABLE, new Date(), null);
     @OneToMany(mappedBy = "drone")
-    private List<Status_management> status_managements;
+    private List<DroneStatus> statusDrone;
 
     public Drone(){
 
