@@ -11,6 +11,11 @@ import java.util.List;
 public class MyDate {
 
     private int day; private int month; private int year; private Date date; private int date_seconds;
+
+    public MyDate(){
+
+    }
+
     public MyDate(String new_date, String an_hour) throws Exception {
         date = parseparams(new_date);
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

@@ -1,5 +1,6 @@
 package fr.unice.polytech.isa.dd.entities;
 import org.joda.time.DateTime;
+import utils.MyDate;
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
 import javax.persistence.*;
@@ -20,7 +21,7 @@ public class Package implements Serializable {
     private double weight;
 
 //    @NotNull
-    private DateTime deliveryDate;
+    private MyDate deliveryDate;
 
     @ManyToOne
     private Provider provider;
@@ -29,7 +30,7 @@ public class Package implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Package(int secretN,Double w,DateTime d, Provider pro) {
+    public Package(int secretN,Double w,MyDate d, Provider pro) {
         secretN = secretN;
         weight = w;
         deliveryDate = d;
@@ -72,11 +73,11 @@ public class Package implements Serializable {
         this.id = id;
     }
 
-    public DateTime getDeliveryDate() {
+    public MyDate getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(DateTime deliveryDate) {
+    public void setDeliveryDate(MyDate deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
