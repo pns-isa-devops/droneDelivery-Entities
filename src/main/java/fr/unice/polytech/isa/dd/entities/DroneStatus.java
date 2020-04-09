@@ -2,29 +2,30 @@ package fr.unice.polytech.isa.dd.entities;
 //import org.jetbrains.annotations.NotNull;
 
 //import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
 
-//@Entity
+@Entity
 public class DroneStatus implements Serializable {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-//    @NotNull
+    //    @NotNull
     private DRONE_STATES libelleStatusDrone;
 
-//    @NotNull
+    //    @NotNull
     private Date timeStartState;
 
-//    @NotNull
+    //    @NotNull
     private Date timeEndState;
 
-    public DroneStatus(){
-
-    }
 
     public DroneStatus(DRONE_STATES state, Date hourBeginning, Date hourEnd) {
         libelleStatusDrone=  state;

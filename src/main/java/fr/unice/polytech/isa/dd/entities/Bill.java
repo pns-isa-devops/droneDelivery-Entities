@@ -3,9 +3,11 @@ package fr.unice.polytech.isa.dd.entities;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Bill implements Serializable {

@@ -7,6 +7,9 @@
 
     <jta-data-source>DDDataSource</jta-data-source>
 
+    <class>fr.unice.polytech.isa.dd.entities.Status_management</class>
+    <class>fr.unice.polytech.isa.dd.entities.Drone</class>
+    <class>fr.unice.polytech.isa.dd.entities.DroneStatus</class>
     <class>fr.unice.polytech.isa.dd.entities.Bill</class>
     <class>fr.unice.polytech.isa.dd.entities.Delivery</class>
     <class>fr.unice.polytech.isa.dd.entities.Customer</class>

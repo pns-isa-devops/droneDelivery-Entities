@@ -1,14 +1,11 @@
 package fr.unice.polytech.isa.dd.entities;
-
 import org.joda.time.DateTime;
-
+//import javax.persistence.*;
+//import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
-
-//import javax.persistence.*;
-//import javax.validation.constraints.NotNull;
 
 @Entity
 public class Package implements Serializable {

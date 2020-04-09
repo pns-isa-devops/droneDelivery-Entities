@@ -1,26 +1,37 @@
 package fr.unice.polytech.isa.dd.entities;
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
-
+//import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Drone implements Serializable {
 
-  //  @Id
-  // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-//    @NotNull
+    //    @NotNull
     private int battery; //In percentage
 
-//    @NotNull
+    //    @NotNull
     private int flightHours;
 
-//    @NotNull
-    private DroneStatus droneStatus = new DroneStatus(DRONE_STATES.AVAILABLE, new Date(), null);
+    @OneToMany(mappedBy = "drone")
+    private List<Delivery> deliveries;
+
+    //    @NotNull
+    //Cest status management qui doit être ici du coup je pense je ne suis pas sûr
+    //private DroneStatus droneStatus = new DroneStatus(DRONE_STATES.AVAILABLE, new Date(), null);
+    @OneToMany(mappedBy = "drone")
+    private List<Status_management> status_managements;
 
     public Drone(){
 
@@ -43,9 +54,9 @@ public class Drone implements Serializable {
         return flightHours;
     }
 
-    public DroneStatus getDroneStatus() {
+    /*public DroneStatus getDroneStatus() {
         return droneStatus;
-    }
+    }*/
 
 
     public void setBatteryLife(int percentageToReduce) {
@@ -56,6 +67,17 @@ public class Drone implements Serializable {
         flightHours += nbHours;
     }
 
+    public void setDeliveries(List<Delivery> deliveries) {
+        this.deliveries = deliveries;
+    }
+
+    public void setBattery(int battery) {
+        this.battery = battery;
+    }
+
+   /* public void setDroneStatus(DroneStatus droneStatus) {
+        this.droneStatus = droneStatus;
+    }*/
 
     @Override
     public boolean equals(Object o) {

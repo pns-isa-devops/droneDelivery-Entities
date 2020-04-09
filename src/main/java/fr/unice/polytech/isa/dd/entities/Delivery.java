@@ -1,10 +1,13 @@
 package fr.unice.polytech.isa.dd.entities;
-
-import javax.persistence.*;
-import java.io.Serializable;
+import org.joda.time.DateTime;
+import utils.MyDate;
 
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Random;
 //import java.util.Date;
 
 @Entity
@@ -22,6 +25,9 @@ public class Delivery implements Serializable {
 
     @ManyToOne
     private Bill bill;
+
+    @ManyToOne
+    private Drone drone;
 
     //@NotNull
     private String deliveryDate;
