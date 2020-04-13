@@ -10,34 +10,30 @@ import java.util.Date;
 @Entity
 public class DroneStatus implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     //    @NotNull
     private DRONE_STATES libelleStatusDrone;
 
     //    @NotNull
-    private Date timeStartState;
+    private String timeStartState;
 
     //    @NotNull
-    private Date timeEndState;
+    private String timeEndState;
 
-    @ManyToOne
     private Drone drone;
 
-    public DroneStatus(Drone drone, DRONE_STATES state, Date hourBeginning, Date hourEnd) {
-        libelleStatusDrone=  state;
-        timeStartState = hourBeginning;
-        timeEndState = hourEnd;
-        drone=drone;
+    public DroneStatus() {
+
     }
-    public DroneStatus(Drone drone, DRONE_STATES state, Date hourBeginning) {
+    public DroneStatus(Drone drone, DRONE_STATES state, String  hourBeginning) {
         libelleStatusDrone=  state;
         timeStartState = hourBeginning;
         drone=drone;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
         return this.id;
     }
@@ -46,15 +42,15 @@ public class DroneStatus implements Serializable {
         return libelleStatusDrone;
     }
 
-    public Date getTimeStartState() {
+    public String getTimeStartState() {
         return timeStartState;
     }
 
-    public Date getTimeEndState() {
+    public String getTimeEndState() {
         return timeEndState;
     }
 
-
+    @ManyToOne
     public Drone getDrone() {
         return drone;
     }

@@ -54,6 +54,8 @@ public class Drone implements Serializable {
         return flightHours;
     }
 
+    public List<DroneStatus> getStatusDrone(){return statusDrone;}
+
     /*public DroneStatus getDroneStatus() {
         return droneStatus;
     }*/
@@ -75,6 +77,10 @@ public class Drone implements Serializable {
         this.battery = battery;
     }
 
+    public void addStatut(DroneStatus stat)
+    {
+        statusDrone.add(stat);
+    }
    /* public void setDroneStatus(DroneStatus droneStatus) {
         this.droneStatus = droneStatus;
     }*/
