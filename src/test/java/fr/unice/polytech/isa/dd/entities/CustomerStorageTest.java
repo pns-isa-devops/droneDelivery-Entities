@@ -49,12 +49,14 @@ public class CustomerStorageTest extends AbstractEntitiesTest {
         Package package1 = new Package();
         package1.setWeight(10.0);
         package1.setProvider(provider);
+        package1.setSecret_number("AXXXX2");
         entityManager.persist(package1);
         provider.add(package1);
 
         Package package2 = new Package();
         package2.setWeight(20.0);
         package2.setProvider(provider);
+        package2.setSecret_number("AXXXX1");
         entityManager.persist(package2);
         provider.add(package2);
 
@@ -82,12 +84,14 @@ public class CustomerStorageTest extends AbstractEntitiesTest {
         Package package1 = new Package();
         package1.setWeight(10.0);
         package1.setProvider(provider);
+        package1.setSecret_number("AXXXX3");
         entityManager.persist(package1);
         provider.add(package1);
 
         Package package2 = new Package();
         package2.setWeight(20.0);
         package2.setProvider(provider);
+        package2.setSecret_number("AXXXX4");
         entityManager.persist(package2);
         provider.add(package2);
 
@@ -128,12 +132,14 @@ public class CustomerStorageTest extends AbstractEntitiesTest {
         Package package1 = new Package();
         package1.setWeight(10.0);
         package1.setProvider(provider);
+        package1.setSecret_number("AXXXX6");
         entityManager.persist(package1);
         provider.add(package1);
 
         Package package2 = new Package();
         package2.setWeight(20.0);
         package2.setProvider(provider);
+        package2.setSecret_number("AXXXX10");
         entityManager.persist(package2);
         provider.add(package2);
 

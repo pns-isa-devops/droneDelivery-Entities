@@ -15,13 +15,13 @@ public class Package implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int secretNumber;
+    private String secretNumber;
 
     @NotNull
     private double weight;
 
 //    @NotNull
-    private MyDate deliveryDate;
+    private String deliveryDate;
 
     @ManyToOne
     private Provider provider;
@@ -30,8 +30,8 @@ public class Package implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Package(int secretN,Double w,MyDate d, Provider pro) {
-        secretN = secretN;
+    public Package(String secretN,Double w,String d, Provider pro) {
+        secretNumber = secretN;
         weight = w;
         deliveryDate = d;
         provider = pro;
@@ -57,11 +57,11 @@ public class Package implements Serializable {
         this.provider = provider;
     }
 
-    public int getSecret_number() {
+    public String getSecret_number() {
         return secretNumber;
     }
 
-    public void setSecret_number(int secret_number) {
+    public void setSecret_number(String secret_number) {
         this.secretNumber = secret_number;
     }
 
@@ -73,11 +73,11 @@ public class Package implements Serializable {
         this.id = id;
     }
 
-    public MyDate getDeliveryDate() {
+    public String getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(MyDate deliveryDate) {
+    public void setDeliveryDate(String deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
@@ -93,7 +93,7 @@ public class Package implements Serializable {
 
     @Override
     public int hashCode(){
-        int result = getSecret_number();
+        int result = getSecret_number().hashCode();
         result = 31 * result;
         return result;
     }

@@ -11,6 +11,7 @@ import java.util.List;
 public class MyDate {
 
     private int day; private int month; private int year; private Date date; private int date_seconds;
+    private String new_date; private String an_hour;
 
     public MyDate(){
 
@@ -23,6 +24,8 @@ public class MyDate {
         month = localDate.getMonthValue();
         year = localDate.getYear();
         date_seconds= parsehour(an_hour);
+        this.an_hour = an_hour;
+        this.new_date = new_date;
     }
 
     public int getDay() {
@@ -61,5 +64,10 @@ public class MyDate {
         seconds += temp * 60;
 
         return seconds;
+    }
+
+    @Override
+    public String toString() {
+        return new_date + " " + an_hour;
     }
 }
