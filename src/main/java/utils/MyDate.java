@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,10 @@ public class MyDate {
 
     private int day; private int month; private int year; private Date date; private int date_seconds;
     private String new_date; private String an_hour;
+
+    LocalDate localDate = LocalDate.now();
+
+    private String date_now = localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
     public MyDate(){
 
@@ -70,4 +75,13 @@ public class MyDate {
     public String toString() {
         return new_date + " " + an_hour;
     }
+
+    public String getDate_now() {
+        return date_now;
+    }
+
+    public void setDate_now(String date_now) {
+        this.date_now = date_now;
+    }
+
 }
