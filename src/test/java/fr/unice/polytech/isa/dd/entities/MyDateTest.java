@@ -37,7 +37,7 @@ public class MyDateTest extends AbstractEntitiesTest {
         MyDate myDate = new MyDate();
         String date_now = myDate.getDate_now();
 
-        assertEquals("16/04/2020",date_now);
+        assertEquals("17/04/2020",date_now);
 
         myDate.setDate_now("20/04/2020");
         assertEquals("20/04/2020",myDate.getDate_now());
