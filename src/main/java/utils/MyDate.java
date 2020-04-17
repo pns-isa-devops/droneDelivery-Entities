@@ -14,9 +14,9 @@ public class MyDate {
     private int day; private int month; private int year; private Date date; private int date_seconds;
     private String new_date; private String an_hour;
 
-    LocalDate localDate = LocalDate.now();
+    static LocalDate localDate = LocalDate.now();
 
-    private String date_now = localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    public static String date_now = localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
     public MyDate(){
 
@@ -81,7 +81,7 @@ public class MyDate {
     }
 
     public void setDate_now(String date_now) {
-        this.date_now = date_now;
+        MyDate.date_now = date_now;
     }
 
 }
