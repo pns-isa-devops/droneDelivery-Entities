@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -42,6 +43,7 @@ public class Drone implements Serializable {
         droneId = id;
         battery=  n_battery;
         flightHours = n_flightHours;
+        statusDrone = new ArrayList<>();
     }
 
     public int getId() {

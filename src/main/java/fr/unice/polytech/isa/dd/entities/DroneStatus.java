@@ -10,6 +10,8 @@ import java.util.Date;
 @Entity
 public class DroneStatus implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     //    @NotNull
@@ -21,6 +23,7 @@ public class DroneStatus implements Serializable {
     //    @NotNull
     private String timeEndState;
 
+    @ManyToOne
     private Drone drone;
 
     public DroneStatus() {
@@ -29,11 +32,9 @@ public class DroneStatus implements Serializable {
     public DroneStatus(Drone drone, DRONE_STATES state, String  hourBeginning) {
         libelleStatusDrone=  state;
         timeStartState = hourBeginning;
-        drone=drone;
+        this.drone=drone;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
         return this.id;
     }
@@ -50,7 +51,6 @@ public class DroneStatus implements Serializable {
         return timeEndState;
     }
 
-    @ManyToOne
     public Drone getDrone() {
         return drone;
     }
