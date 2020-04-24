@@ -18,6 +18,7 @@ public class Drone implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private String droneId;
     //    @NotNull
     private int battery; //In percentage
 
@@ -37,7 +38,8 @@ public class Drone implements Serializable {
 
     }
 
-    public Drone(int n_battery, int  n_flightHours) {
+    public Drone(int n_battery, int  n_flightHours, String id) {
+        droneId = id;
         battery=  n_battery;
         flightHours = n_flightHours;
     }
@@ -95,4 +97,11 @@ public class Drone implements Serializable {
         return Objects.equals(id, that.id);
     }
 
+    public String getDroneId() {
+        return droneId;
+    }
+
+    public void setDroneId(String droneId) {
+        this.droneId = droneId;
+    }
 }
