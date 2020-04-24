@@ -123,7 +123,7 @@ public class Delivery implements Serializable {
     }
 
     public double getPrice() {
-        return price;
+        return getPackageDelivered().getWeight() * 10;
     }
 
     public boolean isStatus() {
