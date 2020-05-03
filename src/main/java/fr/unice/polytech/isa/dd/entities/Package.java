@@ -23,6 +23,8 @@ public class Package implements Serializable {
 //    @NotNull
     private String deliveryDate;
 
+    private String registerDate;
+
     @ManyToOne
     private Provider provider;
 
@@ -33,8 +35,17 @@ public class Package implements Serializable {
     public Package(String secretN,Double w,String d, Provider pro) {
         secretNumber = secretN;
         weight = w;
-        deliveryDate = d;
+        registerDate = d;
         provider = pro;
+        deliveryDate = "";
+    }
+
+    public String getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(String registerDate) {
+        this.registerDate = registerDate;
     }
 
     public double getWeight() {
@@ -58,7 +69,7 @@ public class Package implements Serializable {
     }
 
     public String getSecret_number() {
-        return secretNumber;
+        return this.secretNumber;
     }
 
     public void setSecret_number(String secret_number) {
@@ -74,7 +85,7 @@ public class Package implements Serializable {
     }
 
     public String getDeliveryDate() {
-        return deliveryDate;
+        return this.deliveryDate;
     }
 
     public void setDeliveryDate(String deliveryDate) {
