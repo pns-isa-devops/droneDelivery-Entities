@@ -7,12 +7,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 
-@Entity
+@Embeddable
 public class DroneStatus implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
 
     //    @NotNull
     private DRONE_STATES libelleStatusDrone;
@@ -33,10 +29,6 @@ public class DroneStatus implements Serializable {
         libelleStatusDrone=  state;
         timeStartState = hourBeginning;
         this.drone=drone;
-    }
-
-    public int getId() {
-        return this.id;
     }
 
     public DRONE_STATES getLibelleStatusDrone () {

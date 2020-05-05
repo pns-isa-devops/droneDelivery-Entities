@@ -32,18 +32,19 @@ public class Drone implements Serializable {
     //    @NotNull
     //Cest status management qui doit être ici du coup je pense je ne suis pas sûr
     //private DroneStatus droneStatus = new DroneStatus(DRONE_STATES.AVAILABLE, new Date(), null);
-    @OneToMany(mappedBy = "drone")
-    private List<DroneStatus> statusDrone;
+    @ElementCollection
+    private List<DroneStatus> listStatusDrone;
 
     public Drone(){
 
     }
 
-    public Drone(int n_battery, int  n_flightHours, String id) {
-        droneId = id;
-        battery=  n_battery;
-        flightHours = n_flightHours;
-        statusDrone = new ArrayList<>();
+    public Drone(int n_battery, int n_flightHours,String drone_id) {
+        this.droneId = drone_id;
+        this.battery =  n_battery;
+        this.flightHours = n_flightHours;
+        this.listStatusDrone = new ArrayList<>();
+        this.deliveries = new ArrayList<>();
     }
 
     public int getId() {
@@ -51,14 +52,14 @@ public class Drone implements Serializable {
     }
 
     public int getBatteryLife() {
-        return battery;
+        return this.battery;
     }
 
     public int getFlightHours() {
-        return flightHours;
+        return this.flightHours;
     }
 
-    public List<DroneStatus> getStatusDrone(){return statusDrone;}
+    public List<DroneStatus> getStatusDrone(){return this.listStatusDrone;}
 
     /*public DroneStatus getDroneStatus() {
         return droneStatus;
@@ -83,7 +84,7 @@ public class Drone implements Serializable {
 
     public void addStatut(DroneStatus stat)
     {
-        statusDrone.add(stat);
+        this.listStatusDrone.add(stat);
     }
    /* public void setDroneStatus(DroneStatus droneStatus) {
         this.droneStatus = droneStatus;
