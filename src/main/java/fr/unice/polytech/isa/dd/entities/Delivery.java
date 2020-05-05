@@ -1,4 +1,5 @@
 package fr.unice.polytech.isa.dd.entities;
+
 import org.joda.time.DateTime;
 import utils.MyDate;
 
@@ -51,7 +52,7 @@ public class Delivery implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Delivery(Customer c, Package p, String deliveryDateString, int begintimeinseconds) throws Exception {
+    public Delivery(Customer c, Package p, String deliveryDateString, int begintimeinseconds) {
         //id = new Random().nextInt();
         customer = c;
         packageDelivered = p;
@@ -94,7 +95,7 @@ public class Delivery implements Serializable {
         status = s;
     }
 
-    public boolean getStatus(){
+    public boolean getStatus() {
         return this.status;
     }
 
