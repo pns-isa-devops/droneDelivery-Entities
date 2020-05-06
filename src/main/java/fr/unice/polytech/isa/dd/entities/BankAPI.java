@@ -9,20 +9,23 @@ public class BankAPI {
 
     private String url;
 
-
     public BankAPI(String host, String port) {
         this.url = "http://" + host + ":" + port;
     }
 
-    public BankAPI() { this("localhost", "9090"); }
+    public BankAPI() {
+        this("localhost", "9090");
+    }
+
+
     public JSONObject getPayment(int id) throws ExternalPartnerException {
-        JSONObject payment=null;
+        JSONObject payment = null;
         try {
             String response = WebClient.create(url).path("/payments/" + id).get(String.class);
 
             //if (response != null) {
-                payment = new JSONObject(response);
-                //return true;
+            payment = new JSONObject(response);
+            //return true;
             //}
         } catch (Exception e) {
             throw new ExternalPartnerException(url + "/payments/" + id, e);
@@ -33,7 +36,8 @@ public class BankAPI {
     }
 
     public JSONArray getPayements() throws ExternalPartnerException {
-        JSONArray res=null;
+
+        JSONArray res = null;
         try {
             String response = WebClient.create(url).path("/payments").get(String.class);
             res = new JSONArray(response);
