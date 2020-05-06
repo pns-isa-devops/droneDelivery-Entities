@@ -89,4 +89,11 @@ public class MyDate {
         MyDate.date_now = date_now;
     }
 
+    public static String convertMillisecondInHours(int milliseconds_given){
+        int hours =  ((milliseconds_given / 3600000)%24);
+        int minutes = ((milliseconds_given / 60000)%60);
+
+        return hours + "h"+minutes;
+    }
+
 }
