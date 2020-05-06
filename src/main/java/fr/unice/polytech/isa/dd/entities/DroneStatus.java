@@ -3,6 +3,7 @@ package fr.unice.polytech.isa.dd.entities;
 
 //import javax.persistence.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,25 +11,22 @@ import java.util.Date;
 @Embeddable
 public class DroneStatus implements Serializable {
 
-    //    @NotNull
+    @NotNull
+    @Enumerated(EnumType.STRING)
     private DRONE_STATES libelleStatusDrone;
 
-    //    @NotNull
+    @NotNull
     private String timeStartState;
 
     //    @NotNull
     private String timeEndState;
 
-    @ManyToOne
-    private Drone drone;
-
     public DroneStatus() {
 
     }
-    public DroneStatus(Drone drone, DRONE_STATES state, String  hourBeginning) {
+    public DroneStatus(DRONE_STATES state, String  hourBeginning) {
         libelleStatusDrone=  state;
         timeStartState = hourBeginning;
-        this.drone=drone;
     }
 
     public DRONE_STATES getLibelleStatusDrone () {
@@ -41,13 +39,5 @@ public class DroneStatus implements Serializable {
 
     public String getTimeEndState() {
         return timeEndState;
-    }
-
-    public Drone getDrone() {
-        return drone;
-    }
-
-    public void setDrone(Drone drone) {
-        this.drone = drone;
     }
 }

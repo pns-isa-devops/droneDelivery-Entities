@@ -61,11 +61,6 @@ public class Drone implements Serializable {
 
     public List<DroneStatus> getStatusDrone(){return this.listStatusDrone;}
 
-    /*public DroneStatus getDroneStatus() {
-        return droneStatus;
-    }*/
-
-
     public void setBatteryLife(int percentageToReduce) {
         battery -= percentageToReduce;
     }
@@ -86,9 +81,6 @@ public class Drone implements Serializable {
     {
         this.listStatusDrone.add(stat);
     }
-   /* public void setDroneStatus(DroneStatus droneStatus) {
-        this.droneStatus = droneStatus;
-    }*/
 
     @Override
     public boolean equals(Object o) {
