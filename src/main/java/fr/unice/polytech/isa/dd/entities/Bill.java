@@ -16,37 +16,50 @@ public class Bill implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    //@NotNull
-    private DateTime billDate; //Date où la facture a été emise
+    @NotNull
+    private long idBill;
+
+    @NotNull
+    private String billDate; //Date où la facture a été emise
 
     //@NotNull
     private DateTime paymentDate; //Date du reglement de la facture
 
-    //@NotNull
+    @NotNull
     private double billAmount = 0.0; //Montant de la facture
 
     //PAID or UNPAID. May be have to use an enum
-   //@NotNull
+   @NotNull
     private String billStatus = "UNPAID";
 
     @ManyToOne
+    @NotNull
     private Provider provider;
 
     @OneToMany(mappedBy = "bill")
+    @NotNull
     private List<Delivery> deliveries;
 
     public Bill() {
         // Necessary for JPA instantiation process
     }
 
-    public Bill(int i ,Provider p, List<Delivery> ds) {
-        provider = p;
-        deliveries = ds;
-        billDate = new DateTime();
-        for (Delivery d : ds) {
+    public Bill(int id_bill ,Provider provider, List<Delivery> deliveryList) {
+        this.provider = provider;
+        this.deliveries = deliveryList;
+        this.billDate = deliveryList.get(0).getDeliveryDate();
+        for (Delivery d : deliveryList) {
             billAmount+= d.getPrice();
         }
-        id = i;
+        this.idBill = id_bill;
+    }
+
+    public long getIdBill() {
+        return idBill;
+    }
+
+    public void setIdBill(long idBill) {
+        this.idBill = idBill;
     }
 
     public int getId() {
@@ -61,7 +74,7 @@ public class Bill implements Serializable {
         return billAmount;
     }
 
-    public DateTime getBillDate() {
+    public String getBillDate() {
         return billDate;
     }
 
@@ -111,7 +124,7 @@ public class Bill implements Serializable {
         this.id = id;
     }
 
-    public void setBillDate(DateTime billDate) {
+    public void setBillDate(String billDate) {
         this.billDate = billDate;
     }
 

@@ -146,18 +146,18 @@ public class CustomerStorageTest extends AbstractEntitiesTest {
         Delivery delivery1 = new Delivery();
         delivery1.setCustomer(customer);
         delivery1.setPackageDelivered(package1);
+        delivery1.setDeliveryDate("14/06/2020");
         entityManager.persist(delivery1);
         customer.add_a_customer_delivery(delivery1);
 
         Delivery delivery2 = new Delivery();
-        delivery1.setCustomer(customer);
-        delivery1.setPackageDelivered(package2);
+        delivery2.setCustomer(customer);
+        delivery2.setPackageDelivered(package2);
+        delivery2.setDeliveryDate("14/06/2020");
         entityManager.persist(delivery2);
         customer.add_a_customer_delivery(delivery2);
 
-        Bill bill = new Bill();
-        bill.setProvider(provider);
-        bill.setDeliveries(new ArrayList<>(Arrays.asList(delivery1,delivery2)));
+        Bill bill = new Bill(1,provider,new ArrayList<>(Arrays.asList(delivery1,delivery2)));
         provider.getProvider_bills().add(bill);
         entityManager.persist(bill);
 
