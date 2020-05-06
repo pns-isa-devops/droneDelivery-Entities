@@ -44,7 +44,7 @@ public class Bill implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Bill(int id_bill ,Provider provider, List<Delivery> deliveryList) {
+    public Bill(long id_bill ,Provider provider, List<Delivery> deliveryList) {
         this.provider = provider;
         this.deliveries = deliveryList;
         this.billDate = deliveryList.get(0).getDeliveryDate();
