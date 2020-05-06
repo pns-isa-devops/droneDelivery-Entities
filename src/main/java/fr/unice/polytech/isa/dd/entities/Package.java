@@ -1,4 +1,5 @@
 package fr.unice.polytech.isa.dd.entities;
+
 import org.joda.time.DateTime;
 import utils.MyDate;
 //import javax.persistence.*;
@@ -20,7 +21,7 @@ public class Package implements Serializable {
     @NotNull
     private double weight;
 
-//    @NotNull
+    //    @NotNull
     private String deliveryDate;
 
     private String registerDate;
@@ -32,12 +33,12 @@ public class Package implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Package(String secretN,Double w,String d, Provider pro) {
+    public Package(String secretN, Double w, String d, Provider pro) {
         secretNumber = secretN;
         weight = w;
         registerDate = d;
         provider = pro;
-        deliveryDate = "";
+        deliveryDate = null;
     }
 
     public String getRegisterDate() {
@@ -103,7 +104,7 @@ public class Package implements Serializable {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         int result = getSecret_number().hashCode();
         result = 31 * result;
         return result;
