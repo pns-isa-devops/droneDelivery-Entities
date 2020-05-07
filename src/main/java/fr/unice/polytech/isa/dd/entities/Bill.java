@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
 public class Bill implements Serializable {
@@ -17,7 +18,9 @@ public class Bill implements Serializable {
     private int id;
 
     @NotNull
-    private long idBill;
+    private int idBill;
+
+    private static int idCounter = 0;
 
     @NotNull
     private String billDate; //Date où la facture a été emise
@@ -29,7 +32,7 @@ public class Bill implements Serializable {
     private double billAmount = 0.0; //Montant de la facture
 
     //PAID or UNPAID. May be have to use an enum
-   @NotNull
+    @NotNull
     private String billStatus = "UNPAID";
 
     @ManyToOne
@@ -44,21 +47,32 @@ public class Bill implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Bill(long id_bill ,Provider provider, List<Delivery> deliveryList) {
+    public Bill(Provider provider, List<Delivery> deliveryList) {
         this.provider = provider;
         this.deliveries = deliveryList;
         this.billDate = deliveryList.get(0).getDeliveryDate();
         for (Delivery d : deliveryList) {
-            billAmount+= d.getPrice();
+            billAmount += d.getPrice();
         }
-        this.idBill = id_bill;
+        idCounter = idCounter + 1;
+        this.idBill = idCounter;
+    }
+
+    public Bill(int id, Provider provider, List<Delivery> deliveryList) {
+        this.provider = provider;
+        this.deliveries = deliveryList;
+        this.billDate = deliveryList.get(0).getDeliveryDate();
+        for (Delivery d : deliveryList) {
+            billAmount += d.getPrice();
+        }
+        this.idBill = id;
     }
 
     public long getIdBill() {
         return idBill;
     }
 
-    public void setIdBill(long idBill) {
+    public void setIdBill(int idBill) {
         this.idBill = idBill;
     }
 
@@ -87,7 +101,7 @@ public class Bill implements Serializable {
     }
 
     public void setPaymentDate(DateTime pd) {
-       paymentDate = pd;
+        paymentDate = pd;
     }
 
     public void setBillStatus(String bs) {
@@ -106,10 +120,11 @@ public class Bill implements Serializable {
 
     /**
      * Améliorer cette fonction
+     *
      * @return
      */
     @Override
-    public int hashCode(){
+    public int hashCode() {
         int result = 0;
         result = 31 * result + 120;
         result = 31 * result + 15;
