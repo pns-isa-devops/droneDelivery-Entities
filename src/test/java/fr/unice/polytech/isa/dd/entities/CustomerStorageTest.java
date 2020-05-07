@@ -157,7 +157,7 @@ public class CustomerStorageTest extends AbstractEntitiesTest {
         entityManager.persist(delivery2);
         customer.add_a_customer_delivery(delivery2);
 
-        Bill bill = new Bill(1,provider,new ArrayList<>(Arrays.asList(delivery1,delivery2)));
+        Bill bill = new Bill(provider,new ArrayList<>(Arrays.asList(delivery1,delivery2)));
         provider.getProvider_bills().add(bill);
         entityManager.persist(bill);
 
