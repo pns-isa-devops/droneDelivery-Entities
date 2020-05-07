@@ -160,4 +160,19 @@ public class Delivery implements Serializable {
 
     /*** ecriture de la méthode equals et hash à faire ****/
 
+    public Bill getBill() {
+        return bill;
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
+
+    public Drone getDrone() {
+        return drone;
+    }
+
+    public void setDrone(Drone drone) {
+        this.drone = drone;
+    }
 }
