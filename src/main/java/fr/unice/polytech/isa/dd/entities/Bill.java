@@ -20,7 +20,7 @@ public class Bill implements Serializable {
     @NotNull
     private int idBill;
 
-    private static int idCounter = 0;
+//    private static int idCounter = 0;
 
     @NotNull
     private String billDate; //Date où la facture a été emise
@@ -47,15 +47,15 @@ public class Bill implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Bill(Provider provider, List<Delivery> deliveryList) {
+    public Bill(int id,Provider provider, List<Delivery> deliveryList) {
         this.provider = provider;
         this.deliveries = deliveryList;
         this.billDate = deliveryList.get(0).getDeliveryDate();
         for (Delivery d : deliveryList) {
             billAmount += d.getPrice();
         }
-        idCounter = idCounter + 1;
-        this.idBill = idCounter;
+//        idCounter = idCounter + 1;
+        this.idBill = id;
     }
 
 //    public Bill(int id, Provider provider, List<Delivery> deliveryList) {
@@ -153,14 +153,6 @@ public class Bill implements Serializable {
 
     public void setDeliveries(List<Delivery> deliveries) {
         this.deliveries = deliveries;
-    }
-
-    public static int getIdCounter() {
-        return idCounter;
-    }
-
-    public static void setIdCounter(int idCounter) {
-        Bill.idCounter = idCounter;
     }
 }
 
