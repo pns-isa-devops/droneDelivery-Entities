@@ -22,7 +22,7 @@ public class Drone implements Serializable {
     @NotNull
     private String droneId;
     @NotNull
-    private double battery; //In percentage
+    private double battery;
 
     @NotNull
     private double flightHours;
