@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Drone implements Serializable {
@@ -18,13 +19,13 @@ public class Drone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
+    @NotNull
     private String droneId;
-    //    @NotNull
-    private int battery; //In percentage
+    @NotNull
+    private double battery; //In percentage
 
-    //    @NotNull
-    private int flightHours;
+    @NotNull
+    private double flightHours;
 
     @OneToMany(mappedBy = "drone")
     private List<Delivery> deliveries;
@@ -39,10 +40,10 @@ public class Drone implements Serializable {
 
     }
 
-    public Drone(int n_battery, int n_flightHours,String drone_id) {
+    public Drone(String drone_id) {
         this.droneId = drone_id;
-        this.battery =  n_battery;
-        this.flightHours = n_flightHours;
+        this.battery =  12.0;
+        this.flightHours = 0.0;
         this.listStatusDrone = new ArrayList<>();
         this.deliveries = new ArrayList<>();
     }
@@ -51,29 +52,30 @@ public class Drone implements Serializable {
         return this.id;
     }
 
-    public int getBatteryLife() {
+    public double getBatteryLife() {
         return this.battery;
     }
 
-    public int getFlightHours() {
+    public double getFlightHours() {
         return this.flightHours;
     }
 
     public List<DroneStatus> getStatusDrone(){return this.listStatusDrone;}
 
-    public void setBatteryLife(int percentageToReduce) {
-        battery -= percentageToReduce;
+    public void reduceBatteryLife(double batteryUsed) {
+        this.battery -= batteryUsed;
+        this.flightHours += batteryUsed;
     }
 
-    public void setFlightHours(int nbHours) {
-        flightHours += nbHours;
+    public void setFlightHours(double flightHours) {
+        this.flightHours = flightHours;
     }
 
     public void setDeliveries(List<Delivery> deliveries) {
         this.deliveries = deliveries;
     }
 
-    public void setBattery(int battery) {
+    public void setBattery(double battery) {
         this.battery = battery;
     }
 
