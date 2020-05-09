@@ -22,16 +22,18 @@ public class BankAPI {
         JSONObject payment = null;
         try {
             String response = WebClient.create(url).path("/payments/" + id).get(String.class);
-
-            //if (response != null) {
             payment = new JSONObject(response);
-            //return true;
-            //}
         } catch (Exception e) {
-            throw new ExternalPartnerException(url + "/payments/" + id, e);
+            // ### ou soit essayer de pinguer le serveur jenkins
+            System.out.println("-------------------------- Ping jenkins external Service /  PaymentById ------------------------------------");
+            try {
+                String response = WebClient.create("http://jenkins-teamd.francecentral.cloudapp.azure.com:9090/").path("/payments/" + id).get(String.class);
+                payment = new JSONObject(response);
+            } catch (Exception de) {
+                throw new ExternalPartnerException(url + "/payments/" + id, de);
+            }
+            return payment;
         }
-        // Assessing the payment status
-        //return (payment.getInt("Status") == 0);
         return payment;
     }
 
@@ -41,11 +43,17 @@ public class BankAPI {
         try {
             String response = WebClient.create(url).path("/payments").get(String.class);
             res = new JSONArray(response);
-
         } catch (Exception e) {
-            throw new ExternalPartnerException(url + "/payments", e);
+            // ### ou soit essayer de pinguer le serveur jenkins
+            System.out.println("-------------------------- Ping jenkins external Service /  Payment ------------------------------------");
+            try {
+                String response = WebClient.create("http://jenkins-teamd.francecentral.cloudapp.azure.com:9090/").path("/payments").get(String.class);
+                res = new JSONArray(response);
+            } catch (Exception de) {
+                throw new ExternalPartnerException(url + "/payments", de);
+            }
+            return res;
         }
-        // Assessing the payment status
         //return (payment.getInt("Status") == 0);
         return res;
     }
