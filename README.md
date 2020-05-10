@@ -1,5 +1,7 @@
+# j2eSubmodules - Entities
+
 # Vue d'ensemble
- Cet composant fait partie du projet `projet-isa-devops-20-team-d-20 ` nommé `Drone Delivery`. Il représente touute la partie **modèle de donnée** du système et contient donc ainsi touts les `objets métiers` que le système utilise.
+ Cet composant fait partie du projet `projet-isa-devops-20-team-d-20 ` nommé `Drone Delivery`. Il représente toute la partie **modèle de donnée** du système et contient donc ainsi tous les `objets métiers` que le système utilise.
  Il embarque avec lui : 
  * _Java Persistence API_ (JPA, OpenJPA) pour supporter la peristence des objets
  * _HyperSQL Database_ (HSQLDB) pour stocker les données
