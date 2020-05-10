@@ -1,9 +1,12 @@
 package fr.unice.polytech.isa.dd.entities;
 
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.sql.SQLOutput;
 
 public class BankAPI {
 
@@ -41,6 +44,8 @@ public class BankAPI {
 
         JSONArray res = null;
         try {
+            System.out.println("-------------------------- Ping  external Service /  Payment ------------------------------------");
+            System.out.println();
             String response = WebClient.create(url).path("/payments").get(String.class);
             res = new JSONArray(response);
         } catch (Exception e) {
